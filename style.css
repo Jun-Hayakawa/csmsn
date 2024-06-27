@@ -1,0 +1,211 @@
+/*so, i dont know if anyones actually gonna look at this repository but i'll include this anyway.
+i am a python and c guy. i do not know html or css, and i chatGPT'd this website into existence in about two hours high asf.
+this code is AI generated and probably horribly done, just want viewers of the code to know this is not the typical quality level lmaooo*/
+
+
+/* Global styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: white;
+    display: flex; /* Flexbox for body to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 0; /* Padding to prevent content from touching the edges */
+    font-family: 'Comic Sans MS', 'ChalkboardSE-Regular', 'Comic Neue', cursive;
+}
+
+/* Styles specific to the portal page */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex; /* Flexbox for body to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 0;
+    background-color: white;
+    font-family: 'Comic Sans MS', 'ChalkboardSE-Regular', 'Comic Neue', cursive;
+}
+
+.centered-link {
+    position: absolute;
+    bottom: 10vh; /* Adjust as needed to position the image at the bottom */
+    width: auto;
+    height: auto;
+}
+
+.centered-link img {
+    display: block;
+    max-width: 50%;
+    max-height: 50vh;
+    margin: auto;
+    margin-top: 65vh; /* Additional margin to push the image down */
+    transform: scale(0.85); /* Scales the image down to 85% of its original size */
+    transition: transform 0.3s ease;
+}
+
+/* Styles for the eye container and pupil */
+.eye-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px; /* Diameter of the area the pupil can move within */
+    height: 60px; /* Diameter of the area the pupil can move within */
+    pointer-events: none; /* Allows clicks to pass through */
+    overflow: visible; /* Make sure the pupil is not clipped */
+}
+
+.eye {
+    position: absolute;
+    width: 185px; /* Increased size of the eye image */
+    height: 185px; /* Increased size of the eye image */
+    top: -75px; /* Adjusted position to keep the pupil in the center */
+    left: -75px; /* Adjusted position to keep the pupil in the center */
+}
+
+.pupil {
+    position: absolute;
+    width: 25px; /* Size of the pupil */
+    height: 25px; /* Size of the pupil */
+    background-image: url('website_assets/sphere.jpg'); /* Path to the pupil image */
+    background-size: cover; /* Ensure the image covers the area */
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Center the pupil */
+}
+
+/* Styles specific to the home page */
+.grid-container {
+    display: grid;
+    gap: 60px; /* Space between rows */
+}
+
+.row {
+    display: grid;
+    gap: 60px; /* Space between items in a row */
+}
+
+.row:nth-child(1) {
+    grid-template-columns: repeat(3, 100px); /* Maintain 3 columns */
+}
+
+.row:nth-child(2) {
+    grid-template-columns: repeat(4, 100px); /* Maintain 4 columns */
+}
+
+.row:nth-child(3) {
+    grid-template-columns: 100px 300px; /* First cell 100px, second cell wider at 300px */
+}
+
+.row img, .row a img {
+    width: 100px; /* Fixed width for all images */
+    height: 100px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures images cover the area without distorting aspect ratio */
+}
+
+.row a img {
+    transform: scale(0.75); /* Scales down linked images */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.row p {
+    font-size: 36px; /* Adjust size as needed */
+    width: auto; /* Allow text to expand to the width of its container */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .row img, .row a img {
+        width: 50px; /* Adjusted width for smaller screens */
+        height: 50px; /* Adjusted height for smaller screens */
+    }
+    .row p {
+        font-size: 16px; /* Smaller font size for better fit */
+        width: auto; /* Allow text to expand to the width of its container */
+    }
+    .grid-container {
+        gap: 30px; /* Adjusted gap for smaller screens */
+    }
+    .row {
+        gap: 30px; /* Adjusted gap for tighter column spacing */
+    }
+    .row:nth-child(1) {
+        grid-template-columns: repeat(3, 50px); /* Maintain 3 columns for the first row */
+    }
+    .row:nth-child(2) {
+        grid-template-columns: repeat(4, 50px); /* Maintain 4 columns for the second row */
+    }
+    .row:nth-child(3) {
+        grid-template-columns: 50px 150px; /* Adjust the column widths for the third row, making the second column wider */
+    }
+}
+
+/* Additional styles for secret link */
+.secret-link {
+    position: fixed; /* Fixed position relative to the viewport */
+    left: 66px; /* Distance from the left edge of the viewport */
+    bottom: 30px; /* Distance from the bottom edge of the viewport */
+    font-family: 'Times New Roman', Times, serif; /* Times New Roman font */
+    font-size: 16px; /* Font size */
+    color: white; /* Text color */
+    text-decoration: none; /* No underline */
+}
+
+/* Styles for images on the third page */
+.third-page .relative-container {
+    position: relative; /* Establishes a containing block for absolutely positioned elements */
+    width: 100%; /* Ensure it takes up the full width of the viewport */
+    height: 100%; /* Ensure it takes up the full height of the viewport */
+}
+
+.third-page a {
+    position: absolute; /* Position links absolutely within the container */
+}
+
+.third-page .random-img {
+    width: 100px; /* Fixed width for each image */
+    height: 100px; /* Fixed height for each image */
+    object-fit: cover; /* Ensures the images cover their area */
+}
+
+/* Random placements */
+.third-page a:nth-of-type(1) {
+    top: 10%;
+    left: 20%;
+}
+
+.third-page a:nth-of-type(2) {
+    top: 70%;
+    left: 30%;
+}
+
+.third-page a:nth-of-type(3) {
+    top: 50%;
+    left: 60%;
+}
+
+.third-page a:nth-of-type(4) {
+    top: 20%;
+    left: 70%;
+}
+
+/* Rainbow Text Animation */
+@keyframes rainbow-gradient {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.rainbow-text {
+    font-family: 'Comic Sans MS', 'ChalkboardSE-Regular', 'Comic Neue', cursive;
+    font-size: 36px; /* Adjust size as needed */
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text; /* Added standard background-clip for compatibility */
+    color: transparent;
+    animation: rainbow-gradient 5s linear infinite;
+}
+
