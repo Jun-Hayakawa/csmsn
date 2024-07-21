@@ -1,12 +1,12 @@
 const rows = 6;
 const cols = 6;
-const mazeElement = document.getElementById('maze');
-const untitledElement = document.getElementById('untitled');
-const mazeStyle = document.getElementById('mazestyle');
-const mainStyle = document.getElementById('mainstyle');
+const mazeElement = document.getElementById("maze");
+// const untitledElement = document.getElementById("untitled");
+const mazeStyle = document.getElementById("mazestyle");
+// const mainStyle = document.getElementById("mainstyle");
 
-document.documentElement.style.setProperty('--rows', rows);
-document.documentElement.style.setProperty('--cols', cols);
+document.documentElement.style.setProperty("--rows", rows);
+document.documentElement.style.setProperty("--cols", cols);
 
 class Maze {
   constructor(rows, cols) {
@@ -30,9 +30,9 @@ class Maze {
   }
 
   drawGrid() {
-    mazeElement.innerHTML = '';
-    this.grid.forEach(row => {
-      row.forEach(cell => {
+    mazeElement.innerHTML = "";
+    this.grid.forEach((row) => {
+      row.forEach((cell) => {
         cell.updateElement();
         mazeElement.appendChild(cell.element);
       });
@@ -43,10 +43,14 @@ class Maze {
     const { row, col } = cell;
     const neighbors = [];
 
-    if (row > 0 && !this.grid[row - 1][col].visited) neighbors.push(this.grid[row - 1][col]);
-    if (row < this.rows - 1 && !this.grid[row + 1][col].visited) neighbors.push(this.grid[row + 1][col]);
-    if (col > 0 && !this.grid[row][col - 1].visited) neighbors.push(this.grid[row][col - 1]);
-    if (col < this.cols - 1 && !this.grid[row][col + 1].visited) neighbors.push(this.grid[row][col + 1]);
+    if (row > 0 && !this.grid[row - 1][col].visited)
+      neighbors.push(this.grid[row - 1][col]);
+    if (row < this.rows - 1 && !this.grid[row + 1][col].visited)
+      neighbors.push(this.grid[row + 1][col]);
+    if (col > 0 && !this.grid[row][col - 1].visited)
+      neighbors.push(this.grid[row][col - 1]);
+    if (col < this.cols - 1 && !this.grid[row][col + 1].visited)
+      neighbors.push(this.grid[row][col + 1]);
 
     return neighbors;
   }
@@ -82,7 +86,10 @@ class Maze {
       const unvisitedNeighbors = this.getUnvisitedNeighbors(this.current);
 
       if (unvisitedNeighbors.length > 0) {
-        const next = unvisitedNeighbors[Math.floor(Math.random() * unvisitedNeighbors.length)];
+        const next =
+          unvisitedNeighbors[
+            Math.floor(Math.random() * unvisitedNeighbors.length)
+          ];
         this.stack.push(this.current);
         this.removeWalls(this.current, next);
         this.current = next;
@@ -109,17 +116,17 @@ class Maze {
       }
 
       this.drawGrid();
-      await new Promise(r => setTimeout(r, 10)); // Adjust speed here
+      await new Promise((r) => setTimeout(r, 10)); // Adjust speed here
     }
 
     // Change content and stylesheet after maze generation
-    mazeStyle.disabled = true;
-    mainStyle.disabled = false;
-    mazeElement.style.display = 'none';
-    untitledElement.style.display = 'block';
+    // mazeStyle.disabled = true;
+    // mainStyle.disabled = false;
+    mazeElement.style.display = "none";
+    // untitledElement.style.display = "block";
 
     // Apply class to body for main page styles
-    document.body.classList.add('third-page');
+    document.body.classList.add("third-page");
   }
 }
 
@@ -129,19 +136,31 @@ class Cell {
     this.col = col;
     this.visited = false;
     this.walls = { top: true, right: true, bottom: true, left: true };
-    this.element = document.createElement('div');
-    this.element.classList.add('cell');
+    this.element = document.createElement("div");
+    this.element.classList.add("cell");
   }
 
   updateElement() {
-    this.element.style.borderTop = this.walls.top ? '1px solid #444' : 'none';
-    this.element.style.borderRight = this.walls.right ? '1px solid #444' : 'none';
-    this.element.style.borderBottom = this.walls.bottom ? '1px solid #444' : 'none';
-    this.element.style.borderLeft = this.walls.left ? '1px solid #444' : 'none';
-    this.element.classList.toggle('visited', this.visited);
+    this.element.style.borderTop = this.walls.top ? "1px solid #444" : "none";
+    this.element.style.borderRight = this.walls.right
+      ? "1px solid #444"
+      : "none";
+    this.element.style.borderBottom = this.walls.bottom
+      ? "1px solid #444"
+      : "none";
+    this.element.style.borderLeft = this.walls.left ? "1px solid #444" : "none";
+    this.element.classList.toggle("visited", this.visited);
   }
+}
+function replaceState() {
+  const state = { page: "untitled", showHomePage: true };
+  history.replaceState(state, "", "untitled.html");
 }
 
 const mazeInstance = new Maze(rows, cols);
 mazeInstance.drawGrid();
 mazeInstance.generateMaze();
+setTimeout(() => {
+  replaceState();
+  window.location.href = "untitled.html";
+}, 1000);

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio</title>
+    <link rel="stylesheet" href="style.css" /> 
+  </head>
+  <body class="audio-page">
+    <div id="pass-div" class="password">
+      <div class="pass-container">
+        <div class="image-input">
+          <div class="image-container">
+            <img src="./gallery/digital_noise.png" alt="" />
+          </div>
+          <input
+            type="text"
+            placeholder="Prove you are human by entering the text in this image."
+            name="pass"
+            id="pass"
+          />
+          <p id="empty-input">Your text and the image do not match. Please try again.</p>
+          <p id="incorrect-input">Your text and the image do not match. Please try again.</p>
+        </div>
+      </div>
+      <button id="audio-pass-submit" type="submit">Submit</button>
+    </div>
+    <div id="audio" class="audio hidden">
+      <p class="download-text">Good work finding this. If you made it to this page you must be at least kinda interested in this project, so here's something for your effort. <br> <br>
+                              This is the first song I made that I really felt proud of. It was in the middle of COVID and I was 17 years old. Listening to it now, it's 
+                              definitely rough around the edges (and contains some pretty outdated memes lol), but it was the first song where I could identify
+                              the beginnings of my own style, so its special to me. I'll probably never release this, so enjoy this secret track. <br> <br>
+                              
+                              Thanks again for listening =)
+      </p> <!-- Text Block -->
+      <div class="audio-container"> <!-- Container for Playback and Download -->
+        <audio src="./SECRET_TRACK/windows_2020.mp3" controls>
+          Your Browser does not support the current audio format
+        </audio>
+        <a href="./SECRET_TRACK/windows_2020.mp3" download class="download-link">Download</a>
+      </div>
+    </div>
+    <script src="./audio.js"></script>
+  </body>
+</html>
